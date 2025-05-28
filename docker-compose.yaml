@@ -1,0 +1,14 @@
+services:
+    websocket:
+        build: ./socket
+        container_name: websocket_py
+        ports: 
+          - "8765:8765"
+    frontend:
+        build: ./web
+        container_name: frontend
+        depends_on:
+          - websocket
+        ports:
+          - "4200:80"
+    
